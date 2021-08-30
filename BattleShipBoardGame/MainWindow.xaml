@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <TextBox HorizontalAlignment="Left" Margin="121,107,0,0" Text="{Binding WizardName, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="{Binding WizardName}" HorizontalAlignment="Left" Margin="121,76,0,0" VerticalAlignment="Top"/>
+        <Button Content="Skapa Trollkarl" HorizontalAlignment="Left" Margin="256,106,0,0" VerticalAlignment="Top" Width="101" Command="{Binding CreateWizardCommand}"/>
+        <Button Content="Skapa Trollkarl" HorizontalAlignment="Left" Margin="256,131,0,0" VerticalAlignment="Top" Width="101" Command="{Binding CreateWizardCommand}" CommandParameter="2"/>
+        <TextBox HorizontalAlignment="Left" Margin="462,246,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>
