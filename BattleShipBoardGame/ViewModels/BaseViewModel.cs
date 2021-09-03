@@ -10,6 +10,6 @@ namespace BattleShipBoardGame.ViewModels
 
     public class BaseViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
     }
 }
