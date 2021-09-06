@@ -21,7 +21,7 @@ namespace BattleShipBoardGame.Converters
                     case Status.Miss:
                         return new SolidColorBrush(Colors.Yellow);
                     case Status.Sunk:
-                        return new SolidColorBrush(Colors.Gray;
+                        return new SolidColorBrush(Colors.Gray);
                     case Status.Untested:
                         return new SolidColorBrush(Colors.Blue);
                 }
