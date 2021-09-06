@@ -11,9 +11,11 @@ namespace BattleShipBoardGame.ViewModels
         public PlayerViewModel P1 { get; set; } = new Human();
         public PlayerViewModel P2 { get; set; } = new Cpu();
         public ICommand PlaceShipRandomlyCommand { get; }
+        public ICommand OceanClickedCommand { get; }
         public GameViewModel()
         {
             PlaceShipRandomlyCommand = new PlaceShipRandomlyCommand(this);
+            OceanClickedCommand = new OceanClickedCommand(this);
         }
     }
 }

@@ -4,10 +4,22 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BattleShipBoardGame.Views"
+             xmlns:converter="clr-namespace:BattleShipBoardGame.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converter:StatusToColorConverter x:Key="StatusToColorConverter"/>
+    </UserControl.Resources>
     <Border BorderBrush="Black" BorderThickness="2">
-        <Grid Background="{Binding OceanColor, RelativeSource={RelativeSource AncestorType=UserControl}}">
+        
+        <Grid Background="{Binding CurrentStatus, RelativeSource={RelativeSource AncestorType=UserControl}, Converter={StaticResource StatusToColorConverter}}">
+            <Grid.InputBindings>
+                <MouseBinding 
+                    Gesture="LeftClick" 
+                    Command="{Binding OceanClickedCommand}" 
+                    CommandParameter="{Binding Id, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                </MouseBinding>
+            </Grid.InputBindings>
         </Grid>
     </Border>
 </UserControl>

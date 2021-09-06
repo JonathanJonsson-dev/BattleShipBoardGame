@@ -23,8 +23,13 @@ namespace BattleShipBoardGame.Commands
 
         public void Execute(object parameter)
         {
-            gameViewModel.P1.PlaceShipsRandomly();
-            gameViewModel.P1.ExposeAllShips();
+            //gameViewModel.P1.PlaceShipsRandomly();
+            //gameViewModel.P1.ExposeAllShips();
+            var result = gameViewModel.P1.UnderAttack(new System.Drawing.Point(1, 1));
+            result = gameViewModel.P1.UnderAttack(new System.Drawing.Point(1, 2));
+            result = gameViewModel.P1.UnderAttack(new System.Drawing.Point(1, 3));
+            result = gameViewModel.P1.UnderAttack(new System.Drawing.Point(1, 4));
+            result = gameViewModel.P1.UnderAttack(new System.Drawing.Point(1, 5));
         }
     }
 }

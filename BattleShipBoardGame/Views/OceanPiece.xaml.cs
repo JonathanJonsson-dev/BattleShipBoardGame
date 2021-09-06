@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BattleShipBoardGame.Data;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -18,6 +19,28 @@ namespace BattleShipBoardGame.Views
     /// </summary>
     public partial class OceanPiece : UserControl
     {
+
+
+        public Status CurrentStatus
+        {
+            get { return (Status)GetValue(CurrentStatusProperty); }
+            set { SetValue(CurrentStatusProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CurrentStatus.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CurrentStatusProperty =
+            DependencyProperty.Register("CurrentStatus", typeof(Status), typeof(OceanPiece), new PropertyMetadata(Status.Untested));
+
+        public int Id
+        {
+            get { return (int)GetValue(IdProperty); }
+            set { SetValue(IdProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Id.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IdProperty =
+            DependencyProperty.Register("Id", typeof(int), typeof(OceanPiece), new PropertyMetadata(0));
+
         public int X
         {
             get { return (int)GetValue(XProperty); }

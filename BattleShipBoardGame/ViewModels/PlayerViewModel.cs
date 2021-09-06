@@ -32,10 +32,14 @@ namespace BattleShipBoardGame.ViewModels
         {
             FillFleet();
             FillOcean();
-            PlaceShipsRandomly();
+            //PlaceShipsRandomly();
+            AddTestShips();
             ExposeAllShips();
         }
 
+
+
+        #region Ships and Ocean
         private void FillOcean()
         {
             Ocean = new ObservableCollection<OceanPiece>();
@@ -46,9 +50,11 @@ namespace BattleShipBoardGame.ViewModels
                 {
                     var piece = new OceanPiece()
                     {
-                        X = x,
-                        Y = y,
-                        OceanColor = Brushes.Blue
+                        Id = Ocean.Count,
+                        X = y,
+                        Y = x,
+                        CurrentStatus = Status.Untested
+                        //OceanColor = Brushes.Blue
                     };
                     Ocean.Add(piece);
                 }
@@ -67,6 +73,14 @@ namespace BattleShipBoardGame.ViewModels
             }
         }
 
+        public void AddTestShips()
+        {
+            for (int i = 0; i < Ships.Count; i++)
+            {
+                Ships[i].SetCoordinates(new Point(1, i+1));
+            }
+        }
+
 
         /// <summary>
         /// Place ships randomly in battlefield ocean
@@ -79,7 +93,7 @@ namespace BattleShipBoardGame.ViewModels
             foreach (var ship in Ships)
             {
                 ship.Direction = GetRandomDirection();
-                
+
                 do
                 {
                     var point = GetRandomOceanPoint();
@@ -184,7 +198,7 @@ namespace BattleShipBoardGame.ViewModels
 
 
             return coordinates;
-        } 
+        }
 
         /// <summary>
         /// Find a random point in ocean
@@ -208,5 +222,23 @@ namespace BattleShipBoardGame.ViewModels
             int magicNumber = random.Next(2);
             return (Direction)magicNumber;
         }
+
+
+        #endregion
+
+        #region War
+        public Status UnderAttack(Point point)
+        {
+            foreach (var ship in Ships)
+            {
+                var result = ship.UnderAttack(point);
+                if (result == Status.Hit || result == Status.Sunk)
+                {
+                    return result;
+                }
+            }
+            return Status.Miss;
+        } 
+        #endregion
     }
 }
